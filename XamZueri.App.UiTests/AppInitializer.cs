@@ -27,6 +27,8 @@ namespace XamZueri.App.UiTests
 
             throw new Exception("AppInitializer: Unsupported platform " + platform);
         }
+
+
     }
 }
 
