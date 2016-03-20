@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XamZueri.App.Controls;assembly=XamZueri.App"
+             xmlns:res="clr-namespace:XamZueri.App.Resources;assembly=XamZueri.App"
+             x:Class="XamZueri.App.Pages.NewsListPage"
+              Title="{x:Static res:AppResources.NewsListTitle}" Icon="newspaper.png">
+
+  <ContentPage.Padding Thickness="5, 0, 5, 95">
+    <OnPlatform x:TypeArguments="Thickness"
+            iOS="5, 20, 5, 0"
+            Android="5, 0, 5, 0"
+            WinPhone="5, 0, 5, 0"
+         />
+  </ContentPage.Padding>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Icon="ic_refresh.png" Text="Refresh" ClassId="Refresh" Order="Primary" Command="{Binding RefreshCommand}" />
+  </ContentPage.ToolbarItems>
+
+  <controls:InfiniteListView ItemsSource="{Binding Items}"
+            HasUnevenRows="True" LoadMoreCommand="{Binding LoadMoreCommand}" SelectedItemCommand="{Binding SelectedItemCommand}"
+            SeparatorVisibility="None">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <controls:Card Padding="0">
+            <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+              <StackLayout.Padding Thickness="0">
+                <OnPlatform x:TypeArguments="Thickness"
+                    iOS="2, 2, 2, 0"
+                    Android="0"
+                    WinPhone="0"
+                 />
+              </StackLayout.Padding>
+              <Image HorizontalOptions="Fill" Aspect="AspectFill" HeightRequest="200" Source="{Binding ImageUrl}" />
+
+              <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                <Label Text="{Binding Title}" FontSize="Large" />
+                <Label Text="{Binding DateCreated, StringFormat='{0:d}'}" FontSize="Small" TextColor="Gray" />
+                <Label Text="{Binding Description}" FontSize="Small" />
+              </StackLayout>
+            </StackLayout>
+          </controls:Card>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </controls:InfiniteListView>
+  
+</ContentPage>

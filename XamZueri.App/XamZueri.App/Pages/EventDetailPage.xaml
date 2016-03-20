@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:XamZueri.App.Resources;assembly=XamZueri.App"
+             xmlns:controls="clr-namespace:XamZueri.App.Controls;assembly=XamZueri.App"
+             x:Class="XamZueri.App.Pages.EventDetailPage" Title="{Binding Event.Title}" IsBusy="{Binding IsBusy}">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Icon="share.png" Text="Share" ClassId="Share" Order="Primary" Command="{Binding ShareCommand}" />
+  </ContentPage.ToolbarItems>
+      
+  <ScrollView Orientation="Vertical">
+      <StackLayout Orientation="Vertical">
+        <Image HorizontalOptions="Fill" Aspect="AspectFill" HeightRequest="200" Source="{Binding Event.HeaderUrl}" />
+        <StackLayout Orientation="Vertical" Padding="20, 10, 20, 20">
+          <Label Text="{Binding Event.Title}" FontSize="Large" />
+          <Label Text="{Binding Event.DateEvent, StringFormat={x:Static res:AppResources.EventWhen}}" FontSize="Small" />
+          <Label Text="{Binding Event.Description}" FontSize="Medium" />
+          <Label Text="{Binding Meetup.Attending, StringFormat={x:Static res:AppResources.EventAttending}}" FontSize="Small" />
+          <Label Text="{Binding Event.Speaker, StringFormat={x:Static res:AppResources.EventSpeaker}}" FontSize="Small" />
+          <Button Text="{x:Static res:AppResources.EventSignup}" Command="{Binding SignUpCommand}" HorizontalOptions="EndAndExpand" />
+        </StackLayout>
+      </StackLayout>
+    
+  </ScrollView>
+</ContentPage>

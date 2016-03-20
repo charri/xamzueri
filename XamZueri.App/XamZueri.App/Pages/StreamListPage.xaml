@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:XamZueri.App.Resources;assembly=XamZueri.App"
+             xmlns:control="clr-namespace:XamZueri.App.Controls;assembly=XamZueri.App"
+             xmlns:converters="clr-namespace:XamZueri.App.Converters;assembly=XamZueri.App"
+             x:Class="XamZueri.App.Pages.StreamListPage" Title="{x:Static res:AppResources.StreamListTitle}" Icon="rss.png">
+
+  <ContentPage.Padding Thickness="5, 0, 5, 95">
+    <OnPlatform x:TypeArguments="Thickness"
+            iOS="5, 20, 5, 0"
+            Android="5, 0, 5, 0"
+            WinPhone="5, 0, 5, 0"
+         />
+  </ContentPage.Padding>
+  
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:ODataTypeConverter x:Key="ODataTypeConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Icon="ic_refresh.png" Text="Refresh" ClassId="Refresh" Order="Primary" Command="{Binding RefreshCommand}" />
+  </ContentPage.ToolbarItems>
+
+  <control:InfiniteListView ItemsSource="{Binding Items}"
+            HasUnevenRows="True" LoadMoreCommand="{Binding LoadMoreCommand}" SelectedItemCommand="{Binding SelectedItemCommand}"
+            SeparatorVisibility="None">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <control:Card Padding="0">
+            <StackLayout Orientation="Vertical" Padding="20, 20, 20, 20" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+              <Label Text="{Binding Title}" FontSize="Large" />
+              <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                <Label Text="{Binding Type, Converter={StaticResource ODataTypeConverter}}" FontSize="Small"  TextColor="Gray" />
+                <Label Text=" | " FontSize="Small" TextColor="Gray" />
+                <Label Text="{Binding DateCreated, StringFormat='{0:d}'}" FontSize="Small" TextColor="Gray" />
+              </StackLayout>
+            </StackLayout>
+          </control:Card>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </control:InfiniteListView>
+
+</ContentPage>
