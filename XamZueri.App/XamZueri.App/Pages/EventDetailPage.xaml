@@ -5,7 +5,7 @@
              xmlns:controls="clr-namespace:XamZueri.App.Controls;assembly=XamZueri.App"
              x:Class="XamZueri.App.Pages.EventDetailPage" Title="{Binding Event.Title}" IsBusy="{Binding IsBusy}">
   <ContentPage.ToolbarItems>
-    <ToolbarItem Icon="share.png" Text="Share" ClassId="Share" Order="Primary" Command="{Binding ShareCommand}" />
+    <ToolbarItem StyleId="ToolbarItemShare" Icon="share.png" Text="Share" ClassId="Share" Order="Primary" Command="{Binding ShareCommand}" />
   </ContentPage.ToolbarItems>
       
   <ScrollView Orientation="Vertical">
@@ -17,7 +17,7 @@
           <Label Text="{Binding Event.Description}" FontSize="Medium" />
           <Label Text="{Binding Meetup.Attending, StringFormat={x:Static res:AppResources.EventAttending}}" FontSize="Small" />
           <Label Text="{Binding Event.Speaker, StringFormat={x:Static res:AppResources.EventSpeaker}}" FontSize="Small" />
-          <Button Text="{x:Static res:AppResources.EventSignup}" Command="{Binding SignUpCommand}" HorizontalOptions="EndAndExpand" />
+          <Button StyleId="BtnEventSignup" Text="{x:Static res:AppResources.EventSignup}" Command="{Binding SignUpCommand}" HorizontalOptions="EndAndExpand" />
         </StackLayout>
       </StackLayout>
     

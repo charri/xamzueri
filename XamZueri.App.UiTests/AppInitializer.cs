@@ -15,13 +15,14 @@ namespace XamZueri.App.UiTests
                 case Platform.Android:
                     return ConfigureApp
                         .Android
-                        .PreferIdeSettings()
-                        .ApkFile(@"..\..\..\XamZueri.App\XamZueri.App.Droid\bin\Release\ch.xamzueri.app.apk")
+                        //.ApkFile(@"..\..\..\XamZueri.App\XamZueri.App.Droid\bin\Release\ch.xamzueri.app.apk")
                         .EnableLocalScreenshots()
                         .StartApp();
+				
                 case Platform.iOS:
                     return ConfigureApp
                         .iOS
+						.EnableLocalScreenshots()
                         .StartApp();
             }
 

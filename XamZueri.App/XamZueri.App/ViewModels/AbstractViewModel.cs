@@ -57,9 +57,9 @@ namespace XamZueri.App.ViewModels
 
                 foreach (var dependentCommand in dependentCommands)
                 {
-                    var mvxcommand = dependentCommand.Invoke() as MvxCommandBase;
+					var mvxcommand = dependentCommand.Invoke() as MvxCommandBase;
 
-                    mvxcommand?.RaiseCanExecuteChanged();
+					mvxcommand?.RaiseCanExecuteChanged();
                 }
             };
         }

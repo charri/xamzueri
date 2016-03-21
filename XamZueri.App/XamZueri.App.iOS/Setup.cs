@@ -30,9 +30,27 @@ namespace XamZueri.App.iOS
             Mvx.RegisterType<ISocialShareService, AppleSocialShareService>();
         }
 
+		protected override void InitializeLastChance ()
+		{
+			base.InitializeLastChance ();
+		}
+
+		protected override void InitializeCommandHelper ()
+		{
+			// using weak command helper does not work
+			Mvx.RegisterType<IMvxCommandHelper, MvxStrongCommandHelper> ();
+		}
+
         protected override IMvxIosViewPresenter CreatePresenter()
         {
             Forms.Init();
+
+			Forms.ViewInitialized += (object sender, ViewInitializedEventArgs e) => {
+				// http://developer.xamarin.com/recipes/testcloud/set-accessibilityidentifier-ios/
+				if (null != e.View.StyleId) {
+					e.NativeView.AccessibilityIdentifier = e.View.StyleId;
+				}
+			};
 
             var xamarinFormsApp = new MvxFormsApp();
 

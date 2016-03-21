@@ -12,7 +12,7 @@ using XamZueri.App.ViewModels;
 namespace XamZueri.App.Tests.ViewModels
 {
     [TestFixture]
-    public class EventListViewModelTetsts
+    public class EventListViewModelTests
         : MvxTest
     {
 

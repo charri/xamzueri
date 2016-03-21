@@ -26,7 +26,7 @@ namespace XamZueri.App.ViewModels
 
         public override void Start()
         {
-            SetupCanExecuteDependency(nameof(IsBusy), () => LoadMoreCommand, () => RefreshCommand);
+			SetupCanExecuteDependency(nameof(IsBusy), () => LoadMoreCommand, () => RefreshCommand);
             base.Start();
         }
 
@@ -38,7 +38,7 @@ namespace XamZueri.App.ViewModels
 
         public ICommand LoadMoreCommand
         {
-            get { return _loadMoreCommand ?? (_loadMoreCommand = new MvxAsyncCommand(LoadMoreAsync, () => !IsBusy)); }
+            get { return _loadMoreCommand ?? (_loadMoreCommand = new MvxAsyncCommand(LoadMoreAsync, () => !IsBusy) ); }
         }
 
         private async Task LoadMoreAsync()

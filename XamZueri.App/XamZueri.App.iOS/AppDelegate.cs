@@ -16,6 +16,12 @@ namespace XamZueri.App.iOS
         UIWindow _window;
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+			#if ENABLE_TEST_CLOUD
+			// requires Xamarin Test Cloud Agent
+			Xamarin.Calabash.Start();
+			#endif
+
+
             _window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             var setup = new Setup(this, _window);
@@ -25,6 +31,7 @@ namespace XamZueri.App.iOS
             startup.Start();
 
             _window.MakeKeyAndVisible();
+
 
             return true;
         }

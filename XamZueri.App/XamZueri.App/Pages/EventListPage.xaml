@@ -6,7 +6,7 @@
              x:Class="XamZueri.App.Pages.EventListPage" Title="{x:Static res:AppResources.EventListTitle}"  Icon="calendar.png">
   <ContentPage.Padding Thickness="5, 0, 5, 95">
     <OnPlatform x:TypeArguments="Thickness"
-            iOS="5, 20, 5, 0"
+            iOS="5, 10, 5, 0"
             Android="5, 0, 5, 0"
             WinPhone="5, 0, 5, 0"
          />
@@ -14,7 +14,7 @@
 
 
   <ContentPage.ToolbarItems>
-    <ToolbarItem Icon="ic_refresh.png" Text="Refresh" ClassId="Refresh" Order="Primary" Command="{Binding RefreshCommand}" />
+    <ToolbarItem StyleId="ToolbarItemRefresh" Icon="ic_refresh.png" Text="Refresh" ClassId="Refresh" Order="Primary" Command="{Binding RefreshCommand}" />
   </ContentPage.ToolbarItems>
   
   <controls:InfiniteListView ItemsSource="{Binding Items}"
@@ -22,7 +22,7 @@
             SeparatorVisibility="None">
     <ListView.ItemTemplate>
       <DataTemplate>
-        <ViewCell>
+        <ViewCell StyleId="EventItem">
           <controls:Card Padding="0">
             <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
               <StackLayout.Padding Thickness="0">
