@@ -23,7 +23,7 @@
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>Xam UG Züri</string>
+	<string>XamUGZueri</string>
 	<key>CFBundleIdentifier</key>
 	<string>ch.xamzueri.app</string>
 	<key>CFBundleVersion</key>
@@ -52,5 +52,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>CFBundleName</key>
+	<string>XamUGZueri</string>
 </dict>
 </plist>
